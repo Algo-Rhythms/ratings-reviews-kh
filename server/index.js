@@ -7,7 +7,7 @@ app.use(express.static('../client/dist'));
 
 // this is all fine
 
-// test test
+// test
 
 
 app.listen(PORT, () => {
