@@ -6,12 +6,3 @@ const addNewReview = (messageObj, productId) => {
 }
 
 module.exports = {addNewReview, }
-
-// dbconnection.query("DELETE FROM products WHERE name = $1", ['John Doe'], (err, res) => {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         console.log(res);
-//     }
-//     dbconnection.end();
-// })
