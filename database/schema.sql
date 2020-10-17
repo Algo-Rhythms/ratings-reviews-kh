@@ -1,87 +1,86 @@
+-- look for this file, run it
+-- basic set up and seed from here
+
+-- /c postgres command, create tables etc
+-- put (4) copy statement here (below the stuff)!
+
+-- perhaps in a separate js file. DO THIS ONCE, COPY CSVS FIRST. node.fs
+
 CREATE SCHEMA myschema;
-
 DROP DATABASE [ IF EXISTS ] ratingsreviews;
-
 CREATE DATABASE ratingsreviews;
+-- CREATE TABLE [IF NOT EXISTS] table_name
 
-CREATE TABLE [IF NOT EXISTS] table_name (
-  -- user_id serial PRIMARY KEY,
-  -- username VARCHAR ( 50 ) UNIQUE NOT NULL,
-  -- password VARCHAR ( 50 ) NOT NULL,
-  -- email VARCHAR ( 255 ) UNIQUE NOT NULL,
-  -- created_on TIMESTAMP NOT NULL,
-
-  -- user_id INT NOT NULL,
-  -- role_id INT NOT NULL,
-  -- grant_date TIMESTAMP,
-  -- PRIMARY KEY (user_id, role_id),
-  -- FOREIGN KEY (role_id)
-  -- REFERENCES roles (role_id),
-  -- FOREIGN KEY (user_id)
-  -- REFERENCES accounts (user_id)
+CREATE TABLE "Reviews"
+(
+ "id"             int NOT NULL,
+ "rating"         int NOT NULL,
+ "summary"        text NOT NULL,
+ "recommend"      int NOT NULL,
+ "response"       text NOT NULL,
+ "body"           text NOT NULL,
+ "helpfulness"    int NOT NULL,
+ "reported"       boolean NOT NULL,
+ "date"           timestamp with time zone NOT NULL,
+ "reviewer_email" text NOT NULL,
+ "reviewer_name"  text NOT NULL,
+ "product_id"     int NOT NULL,
+ CONSTRAINT "PK_results" PRIMARY KEY ( "id" )
 );
 
-INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)
-VALUES (value1, value2, value3,...valueN);
 
-SELECT column1, column2, columnN FROM table_name;
-SELECT * FROM table_name;
+CREATE TABLE "Photos"
+(
+ "id"  int NOT NULL,
+ "url" text NOT NULL,
+ CONSTRAINT "FK_253" FOREIGN KEY ( "id" ) REFERENCES "Reviews" ( "id" )
+);
+CREATE INDEX "fkIdx_253" ON "Photos"
+(
+ "id"
+);
 
-UPDATE table_name
-SET column1 = value1, column2 = value2...., columnN = valueN
-WHERE [condition];
 
-DELETE FROM table_name
-WHERE [condition];
+CREATE TABLE "Characteristics"
+(
+ "id"         int NOT NULL,
+ "product_id" int NOT NULL,
+ "name"       text NOT NULL,
+ CONSTRAINT "PK_characteristics" PRIMARY KEY ( "id" )
+);
 
--- *************** PostgreSQL ****************;
 
--- ************************************** "Characteristics"
+CREATE TABLE "Reviews_Characteristics"
+(
+"review_id"         int NOT NULL,
+ "id"                int NOT NULL,
+ "value"             text NOT NULL,
+ "characteristic_id" int NOT NULL,
+ CONSTRAINT "PK_characteristics" PRIMARY KEY ( "id" ),
+ CONSTRAINT "FK_299" FOREIGN KEY ( "review_id" ) REFERENCES "Reviews" ( "id" ),
+ CONSTRAINT "FK_333" FOREIGN KEY ( "characteristic_id" ) REFERENCES "Characteristics" ( "id" )
+);
+CREATE INDEX "fkIdx_299" ON "Reviews_Characteristics"
+(
+ "review_id"
+);
+CREATE INDEX "fkIdx_333" ON "Reviews_Characteristics"
+(
+ "characteristic_id"
+);
 
--- CREATE TABLE "Characteristics"
--- (
---  "id"         int NOT NULL,
---  "fit_id"     int NOT NULL,
---  "size_id"    int NOT NULL,
---  "length_id"  int NOT NULL,
---  "width_id"   int NOT NULL,
---  "comfort_id" int NOT NULL,
---  "quality_id" int NOT NULL,
---  CONSTRAINT "PK_product/chars" PRIMARY KEY ( "id" ),
---  CONSTRAINT "FK_77" FOREIGN KEY ( "fit_id" ) REFERENCES "Fit" ( "id" ),
---  CONSTRAINT "FK_80" FOREIGN KEY ( "size_id" ) REFERENCES "Size" ( "id" ),
---  CONSTRAINT "FK_83" FOREIGN KEY ( "length_id" ) REFERENCES "Length" ( "id" ),
---  CONSTRAINT "FK_92" FOREIGN KEY ( "width_id" ) REFERENCES "Width" ( "id" ),
---  CONSTRAINT "FK_95" FOREIGN KEY ( "comfort_id" ) REFERENCES "Comfort" ( "id" ),
---  CONSTRAINT "FK_98" FOREIGN KEY ( "quality_id" ) REFERENCES "Quality" ( "id" )
--- );
+-- id,product_id,rating,date,summary,body,recommend,reported,reviewer_name,reviewer_email,response,helpfulness
 
--- CREATE INDEX "fkIdx_77" ON "Characteristics"
--- (
---  "fit_id"
--- );
 
--- CREATE INDEX "fkIdx_80" ON "Characteristics"
--- (
---  "size_id"
--- );
+-- INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)
+-- VALUES (value1, value2, value3,...valueN);
 
--- CREATE INDEX "fkIdx_83" ON "Characteristics"
--- (
---  "length_id"
--- );
+-- SELECT column1, column2, columnN FROM table_name;
+-- SELECT * FROM table_name;
 
--- CREATE INDEX "fkIdx_92" ON "Characteristics"
--- (
---  "width_id"
--- );
+-- UPDATE table_name
+-- SET column1 = value1, column2 = value2...., columnN = valueN
+-- WHERE [condition];
 
--- CREATE INDEX "fkIdx_95" ON "Characteristics"
--- (
---  "comfort_id"
--- );
-
--- CREATE INDEX "fkIdx_98" ON "Characteristics"
--- (
---  "quality_id"
--- );
+-- DELETE FROM table_name
+-- WHERE [condition];
