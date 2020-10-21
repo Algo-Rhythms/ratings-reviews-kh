@@ -1,75 +1,95 @@
--- look for this file, run it
--- basic set up and seed from here
-
--- /c postgres command, create tables etc
+-- \c postgres command, create tables etc
 -- put (4) copy statement here (below the stuff)!
 
 -- perhaps in a separate js file. DO THIS ONCE, COPY CSVS FIRST. node.fs
 
-CREATE SCHEMA myschema;
-DROP DATABASE [ IF EXISTS ] ratingsreviews;
-CREATE DATABASE ratingsreviews;
--- CREATE TABLE [IF NOT EXISTS] table_name
+--SERIAL PRIMARY KEY?
 
-CREATE TABLE "Reviews"
-(
- "id"             int NOT NULL,
- "rating"         int NOT NULL,
- "summary"        text NOT NULL,
- "recommend"      int NOT NULL,
- "response"       text NOT NULL,
- "body"           text NOT NULL,
- "helpfulness"    int NOT NULL,
- "reported"       boolean NOT NULL,
- "date"           timestamp with time zone NOT NULL,
- "reviewer_email" text NOT NULL,
- "reviewer_name"  text NOT NULL,
+-- CREATE SCHEMA myschema;
+-- CREATE DATABASE ratingsreviews;
+--\c into ratingsreviews;
+
+
+-- id,product_id,rating,date,summary,body,recommend,reported,reviewer_name,reviewer_email,response,helpfulness
+-- 1,1,5,"2019-01-01","This product was great!","I really did or did not like this product based on whether it was sustainably sourced.  Then I found out that its made from nothing at all.",true,false,"funtime","first.last@gmail.com",,8
+CREATE TABLE "reviews"(
+ "id"             int NOT NULL GENERATED ALWAYS AS IDENTITY,
  "product_id"     int NOT NULL,
+ "rating"         text NOT NULL,
+ "date"           date NOT NULL,
+ "summary"        text NOT NULL,
+ "body"           text NOT NULL,
+ "recommend"      boolean NOT NULL,
+ "reported"       boolean NOT NULL,
+ "reviewer_name"  text NOT NULL,
+ "reviewer_email" text NOT NULL,
+ "response"       text,
+ "helpfulness"    int NOT NULL,
  CONSTRAINT "PK_results" PRIMARY KEY ( "id" )
 );
 
 
-CREATE TABLE "Photos"
-(
- "id"  int NOT NULL,
- "url" text NOT NULL,
- CONSTRAINT "FK_253" FOREIGN KEY ( "id" ) REFERENCES "Reviews" ( "id" )
-);
-CREATE INDEX "fkIdx_253" ON "Photos"
-(
- "id"
-);
 
-
-CREATE TABLE "Characteristics"
-(
- "id"         int NOT NULL,
- "product_id" int NOT NULL,
- "name"       text NOT NULL,
- CONSTRAINT "PK_characteristics" PRIMARY KEY ( "id" )
+-- id,review_id,url
+-- 1,5,"https://images.unsplash.com/photo-1560570803-7474c0f9af99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80"
+CREATE TABLE "photos"(
+ "id"        int NOT NULL GENERATED ALWAYS AS IDENTITY,
+ "review_id" int NOT NULL,
+ "url"       text NOT NULL,
+ CONSTRAINT "FK_253" FOREIGN KEY ( "review_id" ) REFERENCES "reviews" ( "id" )
 );
 
-
-CREATE TABLE "Reviews_Characteristics"
-(
-"review_id"         int NOT NULL,
- "id"                int NOT NULL,
- "value"             text NOT NULL,
- "characteristic_id" int NOT NULL,
- CONSTRAINT "PK_characteristics" PRIMARY KEY ( "id" ),
- CONSTRAINT "FK_299" FOREIGN KEY ( "review_id" ) REFERENCES "Reviews" ( "id" ),
- CONSTRAINT "FK_333" FOREIGN KEY ( "characteristic_id" ) REFERENCES "Characteristics" ( "id" )
-);
-CREATE INDEX "fkIdx_299" ON "Reviews_Characteristics"
-(
+CREATE INDEX "fkIdx_253" ON "photos"(
  "review_id"
 );
-CREATE INDEX "fkIdx_333" ON "Reviews_Characteristics"
-(
+
+
+-- id,product_id,name
+-- 1,1,"Fit"
+CREATE TABLE "characteristics"(
+ "id"         int NOT NULL GENERATED ALWAYS AS IDENTITY,
+ "product_id" int NOT NULL,
+ "name"       text NOT NULL,
+ "review_id"  int NOT NULL,
+ CONSTRAINT "PK_characteristics" PRIMARY KEY ( "id" ),
+ CONSTRAINT "FK_337" FOREIGN KEY ( "review_id" ) REFERENCES "reviews" ( "id" )
+);
+
+CREATE INDEX "fkIdx_337" ON "characteristics"(
+ "review_id"
+);
+
+
+
+-- id,characteristic_id,review_id,value
+-- 1,1,1,4
+CREATE TABLE "reviews_characteristics"(
+  "id"         int NOT NULL GENERATED ALWAYS AS IDENTITY,
+ "characteristic_id" int NOT NULL,
+ "review_id"         int NOT NULL,
+ "value"             text NOT NULL,
+ CONSTRAINT "FK_299" FOREIGN KEY ( "review_id" ) REFERENCES "reviews" ( "id" ),
+ CONSTRAINT "FK_333" FOREIGN KEY ( "characteristic_id" ) REFERENCES "characteristics" ( "id" )
+);
+
+CREATE INDEX "fkIdx_299" ON "reviews_characteristics"(
+ "review_id"
+);
+
+CREATE INDEX "fkIdx_333" ON "reviews_characteristics"(
  "characteristic_id"
 );
 
--- id,product_id,rating,date,summary,body,recommend,reported,reviewer_name,reviewer_email,response,helpfulness
+
+
+\COPY reviews(product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness) FROM '/Users/kymhooper/sei12/sdc/ratings-reviews-kh/database/reviewData.csv' WITH (FORMAT csv, header);
+
+
+\COPY photos(id, review_id, url) FROM '/Users/kymhooper/sei12/sdc/ratings-reviews-kh/database/photoData.csv' WITH (FORMAT csv, header);
+
+\COPY characteristics(id, product_id, name, review_id) FROM '/Users/kymhooper/sei12/sdc/ratings-reviews-kh/database/charData.csv' WITH (FORMAT csv, header);
+
+\COPY reviews_characteristics(id, characteristic_id, review_id, value) FROM '/Users/kymhooper/sei12/sdc/ratings-reviews-kh/database/charReviewData.csv' WITH (FORMAT csv, header);
 
 
 -- INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)
