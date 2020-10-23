@@ -13,7 +13,7 @@
 -- id,product_id,rating,date,summary,body,recommend,reported,reviewer_name,reviewer_email,response,helpfulness
 -- 1,1,5,"2019-01-01","This product was great!","I really did or did not like this product based on whether it was sustainably sourced.  Then I found out that its made from nothing at all.",true,false,"funtime","first.last@gmail.com",,8
 CREATE TABLE "reviews"(
- "id"             int NOT NULL GENERATED ALWAYS AS IDENTITY,
+ "review_id"      int NOT NULL GENERATED ALWAYS AS IDENTITY,
  "product_id"     int NOT NULL,
  "rating"         text NOT NULL,
  "date"           date NOT NULL,
@@ -25,18 +25,18 @@ CREATE TABLE "reviews"(
  "reviewer_email" text NOT NULL,
  "response"       text,
  "helpfulness"    int NOT NULL,
- CONSTRAINT "PK_results" PRIMARY KEY ( "id" )
+ CONSTRAINT "PK_results" PRIMARY KEY ( "review_id" )
 );
-
 
 
 -- id,review_id,url
 -- 1,5,"https://images.unsplash.com/photo-1560570803-7474c0f9af99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80"
 CREATE TABLE "photos"(
- "id"        int NOT NULL GENERATED ALWAYS AS IDENTITY,
+ "photo_id"        int NOT NULL GENERATED ALWAYS AS IDENTITY,
  "review_id" int NOT NULL,
  "url"       text NOT NULL,
- CONSTRAINT "FK_253" FOREIGN KEY ( "review_id" ) REFERENCES "reviews" ( "id" )
+ CONSTRAINT "PK_photos" PRIMARY KEY ( "photo_id" ),
+ CONSTRAINT "FK_253" FOREIGN KEY ( "review_id" ) REFERENCES "reviews" ( "review_id" )
 );
 
 CREATE INDEX "fkIdx_253" ON "photos"(
@@ -47,29 +47,25 @@ CREATE INDEX "fkIdx_253" ON "photos"(
 -- id,product_id,name
 -- 1,1,"Fit"
 CREATE TABLE "characteristics"(
- "id"         int NOT NULL GENERATED ALWAYS AS IDENTITY,
+ "characteristic_id"         int NOT NULL GENERATED ALWAYS AS IDENTITY,
  "product_id" int NOT NULL,
  "name"       text NOT NULL,
- "review_id"  int NOT NULL,
- CONSTRAINT "PK_characteristics" PRIMARY KEY ( "id" ),
- CONSTRAINT "FK_337" FOREIGN KEY ( "review_id" ) REFERENCES "reviews" ( "id" )
+ CONSTRAINT "PK_characteristics" PRIMARY KEY ( "characteristic_id" )
 );
-
-CREATE INDEX "fkIdx_337" ON "characteristics"(
- "review_id"
-);
-
+-- CREATE INDEX "fkIdx_337" ON "characteristics"(
+--  "review_id"
+-- );
 
 
 -- id,characteristic_id,review_id,value
 -- 1,1,1,4
 CREATE TABLE "reviews_characteristics"(
-  "id"         int NOT NULL GENERATED ALWAYS AS IDENTITY,
+  "reviews_characteristics_id"         int NOT NULL GENERATED ALWAYS AS IDENTITY,
  "characteristic_id" int NOT NULL,
  "review_id"         int NOT NULL,
  "value"             text NOT NULL,
- CONSTRAINT "FK_299" FOREIGN KEY ( "review_id" ) REFERENCES "reviews" ( "id" ),
- CONSTRAINT "FK_333" FOREIGN KEY ( "characteristic_id" ) REFERENCES "characteristics" ( "id" )
+ CONSTRAINT "FK_299" FOREIGN KEY ( "review_id" ) REFERENCES "reviews" ( "review_id" ),
+ CONSTRAINT "FK_333" FOREIGN KEY ( "characteristic_id" ) REFERENCES "characteristics" ( "characteristic_id" )
 );
 
 CREATE INDEX "fkIdx_299" ON "reviews_characteristics"(
@@ -81,15 +77,21 @@ CREATE INDEX "fkIdx_333" ON "reviews_characteristics"(
 );
 
 
-
+-- id,product_id,rating,date,summary,body,recommend,reported,reviewer_name,reviewer_email,response,helpfulness
+-- 1,1,5,"2019-01-01","This product was great!","I really did or did not like this product based on whether it was sustainably sourced.  Then I found out that its made from nothing at all.",true,false,"funtime","first.last@gmail.com",,8
 \COPY reviews(product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness) FROM '/Users/kymhooper/sei12/sdc/ratings-reviews-kh/database/reviewData.csv' WITH (FORMAT csv, header);
 
+-- id,review_id,url
+-- 1,5,"https://images.unsplash.com/photo-1560570803-7474c0f9af99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80"
+\COPY photos(review_id, url) FROM '/Users/kymhooper/sei12/sdc/ratings-reviews-kh/database/photoData.csv' WITH (FORMAT csv, header);
 
-\COPY photos(id, review_id, url) FROM '/Users/kymhooper/sei12/sdc/ratings-reviews-kh/database/photoData.csv' WITH (FORMAT csv, header);
+-- id,product_id,name
+-- 1,1, 'fit'
+\COPY characteristics(product_id, name) FROM '/Users/kymhooper/sei12/sdc/ratings-reviews-kh/database/charData.csv' WITH (FORMAT csv, header);
 
-\COPY characteristics(id, product_id, name, review_id) FROM '/Users/kymhooper/sei12/sdc/ratings-reviews-kh/database/charData.csv' WITH (FORMAT csv, header);
-
-\COPY reviews_characteristics(id, characteristic_id, review_id, value) FROM '/Users/kymhooper/sei12/sdc/ratings-reviews-kh/database/charReviewData.csv' WITH (FORMAT csv, header);
+-- id,characteristic_id,review_id,value
+-- 1,1,1, 4
+\COPY reviews_characteristics(characteristic_id, review_id, value) FROM '/Users/kymhooper/sei12/sdc/ratings-reviews-kh/database/charReviewData.csv' WITH (FORMAT csv, header);
 
 
 -- INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)
