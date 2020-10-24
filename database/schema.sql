@@ -19,7 +19,7 @@ CREATE TABLE "reviews"(
  "date"           date NOT NULL,
  "summary"        text NOT NULL,
  "body"           text NOT NULL,
- "recommend"      boolean NOT NULL,
+ "recommend"      int NOT NULL,
  "reported"       boolean NOT NULL,
  "reviewer_name"  text NOT NULL,
  "reviewer_email" text NOT NULL,
