@@ -7,12 +7,18 @@ const faker = require('faker');
 // 6,2,5,"2019-06-16","I'm not a fan!","I don't like them",false,false,"negativity","first.last@gmail.com","Sorry to hear. Is there anything in particular you don't like?",0
 const createReview = () => {
   // const id = faker.random.number(200);
-  const product_id = faker.random.number(10000);
+  const product_id = faker.random.number({
+    min: 1,
+    max: 100000,
+  });
   const rating = faker.random.number(5);
   const date = JSON.stringify(faker.date.between('2018-01-01', '2020-12-12'));
   const summary = faker.lorem.paragraph();
   const body = faker.lorem.sentence();
-  const recommend = faker.random.boolean();
+  const recommend = faker.random.number({
+    min: 1,
+    max: 1000,
+  });
   const reported = faker.random.boolean();
   const reviewer_name = faker.name.firstName();
   const reviewer_email = faker.internet.email();
@@ -30,7 +36,7 @@ const createPhoto = () => {
   // const id = faker.random.number(200);
   const reviewId = faker.random.number({
     min: 1,
-    max: 10000,
+    max: 99999,
   });
   const url = JSON.stringify(faker.image.imageUrl(640, 480, 'fashion', true));
 
@@ -43,7 +49,10 @@ const createPhoto = () => {
 // 1,1,"Fit"
 const createCharacteristics = () => {
   // const id = faker.random.number(200);
-  const product_id = faker.random.number(100000);
+  const product_id = faker.random.number({
+    min: 1,
+    max: 999999,
+  });
   const characters = ['Fit', 'Length', 'Quality', 'Comfort', 'Width', 'Size'];
   const randomCharacter = JSON.stringify(characters[Math.floor(Math.random() * characters.length)]);
   //   const review_id = faker.name.firstName();
