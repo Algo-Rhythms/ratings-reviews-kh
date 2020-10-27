@@ -1,0 +1,361 @@
+// const dummydata = [
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 175577,
+//     url: ' http://placeimg.com/640/480/fashion?49231',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 215556,
+//     url: ' http://placeimg.com/640/480/fashion?12676',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 250098,
+//     url: ' http://placeimg.com/640/480/fashion?41559',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 305285,
+//     url: ' http://placeimg.com/640/480/fashion?12195',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 449616,
+//     url: ' http://placeimg.com/640/480/fashion?93491',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 456688,
+//     url: ' http://placeimg.com/640/480/fashion?73358',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 485315,
+//     url: ' http://placeimg.com/640/480/fashion?23721',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 490220,
+//     url: ' http://placeimg.com/640/480/fashion?27366',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 536772,
+//     url: ' http://placeimg.com/640/480/fashion?23568',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 557676,
+//     url: ' http://placeimg.com/640/480/fashion?29424',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 592833,
+//     url: ' http://placeimg.com/640/480/fashion?93214',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 694056,
+//     url: ' http://placeimg.com/640/480/fashion?35087',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 782426,
+//     url: ' http://placeimg.com/640/480/fashion?83914',
+//   },
+//   {
+//     review_id: 4,
+//     rating: ' 4',
+//     summary: ' Est voluptatem iste. Error maiores et occaecati voluptas mollitia et amet est. Rerum laborum animi harum accusantium minus et esse dolor.',
+//     recommend: 313,
+//     response: ' Ea molestias sed repudiandae omnis quis.',
+//     body: ' Quos asperiores tempore.',
+//     date: '2018-09-29T06:00:00.000Z',
+//     reviewer_name: ' Audreanne',
+//     helpfulness: 16,
+//     photo_id: 997684,
+//     url: ' http://placeimg.com/640/480/fashion?6026',
+//   },
+//   {
+//     review_id: 37119,
+//     rating: ' 3',
+//     summary: ' Libero molestias et et. Quae quam alias quia illum tempore. Sed ducimus perspiciatis et aut ut ipsum dolores ex nisi. Assumenda sequi vel totam saepe sit molestiae. Illum est fugit. Distinctio consequatur quae aut ut doloremque aut voluptatem modi fugiat.',
+//     recommend: 613,
+//     response: ' Sed adipisci qui nobis consequuntur beatae nihil non et.',
+//     body: ' Similique et omnis porro non vel eaque occaecati incidunt et.',
+//     date: '2018-06-27T06:00:00.000Z',
+//     reviewer_name: ' Desmond',
+//     helpfulness: 12,
+//     photo_id: 109967,
+//     url: ' http://placeimg.com/640/480/fashion?73932',
+//   },
+//   {
+//     review_id: 37119,
+//     rating: ' 3',
+//     summary: ' Libero molestias et et. Quae quam alias quia illum tempore. Sed ducimus perspiciatis et aut ut ipsum dolores ex nisi. Assumenda sequi vel totam saepe sit molestiae. Illum est fugit. Distinctio consequatur quae aut ut doloremque aut voluptatem modi fugiat.',
+//     recommend: 613,
+//     response: ' Sed adipisci qui nobis consequuntur beatae nihil non et.',
+//     body: ' Similique et omnis porro non vel eaque occaecati incidunt et.',
+//     date: '2018-06-27T06:00:00.000Z',
+//     reviewer_name: ' Desmond',
+//     helpfulness: 12,
+//     photo_id: 240989,
+//     url: ' http://placeimg.com/640/480/fashion?85941',
+//   },
+//   {
+//     review_id: 37119,
+//     rating: ' 3',
+//     summary: ' Libero molestias et et. Quae quam alias quia illum tempore. Sed ducimus perspiciatis et aut ut ipsum dolores ex nisi. Assumenda sequi vel totam saepe sit molestiae. Illum est fugit. Distinctio consequatur quae aut ut doloremque aut voluptatem modi fugiat.',
+//     recommend: 613,
+//     response: ' Sed adipisci qui nobis consequuntur beatae nihil non et.',
+//     body: ' Similique et omnis porro non vel eaque occaecati incidunt et.',
+//     date: '2018-06-27T06:00:00.000Z',
+//     reviewer_name: ' Desmond',
+//     helpfulness: 12,
+//     photo_id: 262463,
+//     url: ' http://placeimg.com/640/480/fashion?68987',
+//   },
+//   {
+//     review_id: 37119,
+//     rating: ' 3',
+//     summary: ' Libero molestias et et. Quae quam alias quia illum tempore. Sed ducimus perspiciatis et aut ut ipsum dolores ex nisi. Assumenda sequi vel totam saepe sit molestiae. Illum est fugit. Distinctio consequatur quae aut ut doloremque aut voluptatem modi fugiat.',
+//     recommend: 613,
+//     response: ' Sed adipisci qui nobis consequuntur beatae nihil non et.',
+//     body: ' Similique et omnis porro non vel eaque occaecati incidunt et.',
+//     date: '2018-06-27T06:00:00.000Z',
+//     reviewer_name: ' Desmond',
+//     helpfulness: 12,
+//     photo_id: 370809,
+//     url: ' http://placeimg.com/640/480/fashion?55147',
+//   },
+//   {
+//     review_id: 37119,
+//     rating: ' 3',
+//     summary: ' Libero molestias et et. Quae quam alias quia illum tempore. Sed ducimus perspiciatis et aut ut ipsum dolores ex nisi. Assumenda sequi vel totam saepe sit molestiae. Illum est fugit. Distinctio consequatur quae aut ut doloremque aut voluptatem modi fugiat.',
+//     recommend: 613,
+//     response: ' Sed adipisci qui nobis consequuntur beatae nihil non et.',
+//     body: ' Similique et omnis porro non vel eaque occaecati incidunt et.',
+//     date: '2018-06-27T06:00:00.000Z',
+//     reviewer_name: ' Desmond',
+//     helpfulness: 12,
+//     photo_id: 453526,
+//     url: ' http://placeimg.com/640/480/fashion?54522',
+//   },
+//   {
+//     review_id: 37119,
+//     rating: ' 3',
+//     summary: ' Libero molestias et et. Quae quam alias quia illum tempore. Sed ducimus perspiciatis et aut ut ipsum dolores ex nisi. Assumenda sequi vel totam saepe sit molestiae. Illum est fugit. Distinctio consequatur quae aut ut doloremque aut voluptatem modi fugiat.',
+//     recommend: 613,
+//     response: ' Sed adipisci qui nobis consequuntur beatae nihil non et.',
+//     body: ' Similique et omnis porro non vel eaque occaecati incidunt et.',
+//     date: '2018-06-27T06:00:00.000Z',
+//     reviewer_name: ' Desmond',
+//     helpfulness: 12,
+//     photo_id: 592316,
+//     url: ' http://placeimg.com/640/480/fashion?56323',
+//   },
+//   {
+//     review_id: 37119,
+//     rating: ' 3',
+//     summary: ' Libero molestias et et. Quae quam alias quia illum tempore. Sed ducimus perspiciatis et aut ut ipsum dolores ex nisi. Assumenda sequi vel totam saepe sit molestiae. Illum est fugit. Distinctio consequatur quae aut ut doloremque aut voluptatem modi fugiat.',
+//     recommend: 613,
+//     response: ' Sed adipisci qui nobis consequuntur beatae nihil non et.',
+//     body: ' Similique et omnis porro non vel eaque occaecati incidunt et.',
+//     date: '2018-06-27T06:00:00.000Z',
+//     reviewer_name: ' Desmond',
+//     helpfulness: 12,
+//     photo_id: 687484,
+//     url: ' http://placeimg.com/640/480/fashion?54836',
+//   },
+//   {
+//     review_id: 37119,
+//     rating: ' 3',
+//     summary: ' Libero molestias et et. Quae quam alias quia illum tempore. Sed ducimus perspiciatis et aut ut ipsum dolores ex nisi. Assumenda sequi vel totam saepe sit molestiae. Illum est fugit. Distinctio consequatur quae aut ut doloremque aut voluptatem modi fugiat.',
+//     recommend: 613,
+//     response: ' Sed adipisci qui nobis consequuntur beatae nihil non et.',
+//     body: ' Similique et omnis porro non vel eaque occaecati incidunt et.',
+//     date: '2018-06-27T06:00:00.000Z',
+//     reviewer_name: ' Desmond',
+//     helpfulness: 12,
+//     photo_id: 809438,
+//     url: ' http://placeimg.com/640/480/fashion?50280',
+//   },
+//   {
+//     review_id: 37119,
+//     rating: ' 3',
+//     summary: ' Libero molestias et et. Quae quam alias quia illum tempore. Sed ducimus perspiciatis et aut ut ipsum dolores ex nisi. Assumenda sequi vel totam saepe sit molestiae. Illum est fugit. Distinctio consequatur quae aut ut doloremque aut voluptatem modi fugiat.',
+//     recommend: 613,
+//     response: ' Sed adipisci qui nobis consequuntur beatae nihil non et.',
+//     body: ' Similique et omnis porro non vel eaque occaecati incidunt et.',
+//     date: '2018-06-27T06:00:00.000Z',
+//     reviewer_name: ' Desmond',
+//     helpfulness: 12,
+//     photo_id: 818720,
+//     url: ' http://placeimg.com/640/480/fashion?24508',
+//   },
+//   {
+//     review_id: 37119,
+//     rating: ' 3',
+//     summary: ' Libero molestias et et. Quae quam alias quia illum tempore. Sed ducimus perspiciatis et aut ut ipsum dolores ex nisi. Assumenda sequi vel totam saepe sit molestiae. Illum est fugit. Distinctio consequatur quae aut ut doloremque aut voluptatem modi fugiat.',
+//     recommend: 613,
+//     response: ' Sed adipisci qui nobis consequuntur beatae nihil non et.',
+//     body: ' Similique et omnis porro non vel eaque occaecati incidunt et.',
+//     date: '2018-06-27T06:00:00.000Z',
+//     reviewer_name: ' Desmond',
+//     helpfulness: 12,
+//     photo_id: 889385,
+//     url: ' http://placeimg.com/640/480/fashion?41436',
+//   },
+// ];
+
+const photoReducer = (rowsArr) => {
+  const storage = {};
+
+  rowsArr.forEach((item) => {
+    const {
+      review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness, photo_id, url,
+    } = item;
+    // check and see if storage has this review_id
+    if (!storage[review_id]) {
+      storage[review_id] = {
+        review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness, photos: [{ photo_id, url }],
+      };
+    } else {
+      storage[review_id].photos.push({ photo_id, url });
+    }
+  });
+
+  return Object.values(storage);
+};
+
+module.exports = { photoReducer };
+
+// console.log(photoReducer(dummydata));
+
+// const items = Object.values(storage);
+
+// const sortingFunc = (a, b) => {
+//   // what is sort set to
+//   // if or switch or ternary; "newest", "helpful", or "relevant"
+//   switch (sort) {
+//     case 'helpful':
+//       return b.helpfulness - a.helpfulness;
+//     default:
+//       break;
+//     case 'newest':
+//       return b.date - a.date;
+//     default:
+//        break;
+//     case 'newest':
+//       return b.date - a.date;
+//     default:
+//       break;
+//   }
+// };
+
+// return items.sort(sortingFunc);
