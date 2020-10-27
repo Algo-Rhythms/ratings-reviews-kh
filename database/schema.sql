@@ -77,6 +77,9 @@ CREATE INDEX "fkIdx_333" ON "reviews_characteristics"(
 );
 
 
+CREATE INDEX review_index ON reviews ("product_id");
+CREATE INDEX photos_index ON photos ("review_id");
+
 -- id,product_id,rating,date,summary,body,recommend,reported,reviewer_name,reviewer_email,response,helpfulness
 -- 1,1,5,"2019-01-01","This product was great!","I really did or did not like this product based on whether it was sustainably sourced.  Then I found out that its made from nothing at all.",true,false,"funtime","first.last@gmail.com",,8
 \COPY reviews(product_id, rating, date, summary, body, recommend, reported, reviewer_name, reviewer_email, response, helpfulness) FROM '/Users/kymhooper/sei12/sdc/ratings-reviews-kh/database/reviewData.csv' WITH (FORMAT csv, header);
