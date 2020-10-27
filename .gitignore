@@ -1,4 +1,7 @@
 node_modules
 coverage
-database/queries.js
 database/dbconnect.js
+database/charData.csv
+database/charReviewData.csv
+database/photoData.csv
+database/reviewData.csv
