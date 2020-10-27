@@ -32,3 +32,4 @@ scenarios:
         count: 1
 
 # artillery run test.yaml
+
