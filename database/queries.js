@@ -52,7 +52,7 @@ const queryAllReviews = (productId, cb) => {
 //     report: false,
 //     email:,
 //     photos:,
-//   } = messageObj;
+//   } = messageObj
 
 //   connection.query(`INSERT into Reviews ${messageObj} where id = ${productId}`, (err, results) => {
 //     if (err) {

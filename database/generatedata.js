@@ -3,7 +3,7 @@ const {
   createReview, createPhoto, createCharacteristics, createCharsReviews,
 } = require('./fakerdata');
 
-// cd database node generatedata.js
+// cd database node generatedata.jsss
 
 const generateReviews = () => {
   const writeReviews = fs.createWriteStream('reviewData.csv');

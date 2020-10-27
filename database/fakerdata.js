@@ -62,7 +62,7 @@ const createCharacteristics = () => {
 // **column headers**
 // id,characteristic_id,review_id,value
 // **example row**
-// 1,1,1,4
+// 1,1,1,5
 const createCharsReviews = () => {
   // const id = faker.random.number(200);
   const char_id = faker.random.number({
