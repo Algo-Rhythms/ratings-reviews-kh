@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const searchReviews = (sort, id, count, callback) => {
-  axios.get(`http://52.26.193.201:3000/reviews/${id}/list`, { params: { count, sort } })
+  axios.get(`http://localhost:3001/reviews/${id}/list`, { params: { count, sort } })
     .then((data) => callback(null, data.data))
     .catch((err) => callback(err, null));
 };

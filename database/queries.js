@@ -12,24 +12,23 @@ const queryAllReviews = (productId, cb) => {
   });
 };
 
-const getMetaData = (id, cb) => {
-  connection.query(`select row_to_json(chars) as characteristics
-  from(
-    select c.product_id, c.name
-    (select json_agg(chars)
-    from (
-      select * from characteristics.name where characteristics.characteristic_id = ${id}
-    ) chars
-  ) as characteristics
-  from characteristics as a) chars;`, (err, results) => {
-    if (err) {
-      cb(err, null);
-    } else {
-      cb(null, results);
-    }
-  });
-};
-
+// const getMetaData = (id, cb) => {
+//   connection.query(`select row_to_json(chars) as characteristics
+//   from(
+//     select c.product_id, c.name
+//     (select json_agg(chars)
+//     from (
+//       select * from characteristics.name where characteristics.characteristic_id = ${id}
+//     ) chars
+//   ) as characteristics
+//   from characteristics as a) chars;`, (err, results) => {
+//     if (err) {
+//       cb(err, null);
+//     } else {
+//       cb(null, results);
+//     }
+//   });
+// };
 // const getMetaData = (productId, cb) => {
 //   connection.query(`SELECT product_id, rating, recommend FROM characteristics
 //   WHERE product_id = ${productId}`, (err, results) => {
@@ -41,32 +40,18 @@ const getMetaData = (id, cb) => {
 //   });
 // };
 
-// characteristics.product_id, reviews.rating, reviews.recommend, characteristics.name, characteristics.characteristic_id, reviews_characteristics.value
-// "product_id": "2",
-//   "ratings": {
-//     2: 1,
-//     3: 1,
-//     4: 2,
-  // },
-  // "recommended": {
-  //   0: 5
-  // },
-  // "characteristics": {
-  //   "Size": {
-  //     "id": 14,
-  //     "value": "4.0000"
-  //   },
-  //   "Width": {
-  //     "id": 15,
-  //     "value": "3.5000"
-  //   },
-  //   "Comfort": {
-  //     "id": 16,
-  //     "value": "4.0000"
-
-// const addNewReview = (messageObj, productId, cb) => {
+// const addNewReview = (productId, messageObj, cb) => {
 //   const {
-//     rating, summary, body, recommend, name, email, photos, characteristics,
+//     rating:,
+//     summary:,
+//     body:,
+//     date:,
+//     recommend:,
+//     reviewer_name:,
+//     helpfulness: 0,
+//     report: false,
+//     email:,
+//     photos:,
 //   } = messageObj;
 
 //   connection.query(`INSERT into Reviews ${messageObj} where id = ${productId}`, (err, results) => {
@@ -99,6 +84,6 @@ const getMetaData = (id, cb) => {
 // };
 
 module.exports = {
-  queryAllReviews, getMetaData,
-  // addNewReview, markReviewHelpful, reportReview,
+  queryAllReviews,
+  // addNewReview, getMetaData, markReviewHelpful, reportReview,
 };

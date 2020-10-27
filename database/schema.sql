@@ -28,6 +28,8 @@ CREATE TABLE "reviews"(
  CONSTRAINT "PK_results" PRIMARY KEY ( "review_id" )
 );
 
+-- CREATE index ON "reviews" ("product_id");
+
 
 -- id,review_id,url
 -- 1,5,"https://images.unsplash.com/photo-1560570803-7474c0f9af99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80"
@@ -39,6 +41,7 @@ CREATE TABLE "photos"(
  CONSTRAINT "FK_253" FOREIGN KEY ( "review_id" ) REFERENCES "reviews" ( "review_id" )
 );
 
+CREATE index ON "reviews" ("product_id");
 CREATE INDEX "fkIdx_253" ON "photos"(
  "review_id"
 );
