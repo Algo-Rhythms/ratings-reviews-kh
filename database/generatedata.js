@@ -7,7 +7,8 @@ const {
 
 const generateReviews = () => {
   const writeReviews = fs.createWriteStream('reviewData.csv');
-  let i = 1000000;
+  // let i = 1000000;
+  let i = 100;
   const write = () => {
     let ok = true;
     do {
@@ -30,7 +31,8 @@ generateReviews();
 
 const generatePhotos = () => {
   const writePhotos = fs.createWriteStream('photoData.csv');
-  let i = 10000000;
+  // let i = 10000000;
+  let i = 100;
   const write = () => {
     let ok = true;
     do {
@@ -53,7 +55,8 @@ generatePhotos();
 
 const generateCharacteristics = () => {
   const writeChars = fs.createWriteStream('charData.csv');
-  let i = 10000000;
+  // let i = 10000000;
+  let i = 100;
   const write = () => {
     let ok = true;
     do {
@@ -76,7 +79,8 @@ generateCharacteristics();
 
 const generateCharsReviews = () => {
   const writeCharReviews = fs.createWriteStream('charReviewData.csv');
-  let i = 1000000;
+  // let i = 1000000;
+  let i = 10;
   const write = () => {
     let ok = true;
     do {
