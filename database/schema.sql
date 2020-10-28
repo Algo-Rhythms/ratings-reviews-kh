@@ -11,7 +11,7 @@
 
 
 -- id,product_id,rating,date,summary,body,recommend,reported,reviewer_name,reviewer_email,response,helpfulness
--- 1,1,5,"2019-01-01","This product was great!","I really did or did not like this product based on whether it was sustainably sourced.  Then I found out that its made from nothing at all.",true,false,"funtime","first.last@gmail.com",,8
+-- 1,1,5,"2019-01-01","This product was great!","I really did or did not like this product based on whether it was sustainably sourced.  Then I found out that its made from nothing at all.",true,false,"funtime","first.last@gmail.com",,8''
 CREATE TABLE "reviews"(
  "review_id"      int NOT NULL GENERATED ALWAYS AS IDENTITY,
  "product_id"     int NOT NULL,
