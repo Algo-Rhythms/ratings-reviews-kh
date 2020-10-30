@@ -9,7 +9,7 @@ const createReview = () => {
   // const id = faker.random.number(200);
   const product_id = faker.random.number({
     min: 1,
-    max: 100000,
+    max: 99,
   });
   const rating = faker.random.number(5);
   const date = JSON.stringify(faker.date.between('2018-01-01', '2020-12-12'));
@@ -17,7 +17,7 @@ const createReview = () => {
   const body = faker.lorem.sentence();
   const recommend = faker.random.number({
     min: 1,
-    max: 1000,
+    max: 99,
   });
   const reported = faker.random.boolean();
   const reviewer_name = faker.name.firstName();
@@ -36,7 +36,7 @@ const createPhoto = () => {
   // const id = faker.random.number(200);
   const reviewId = faker.random.number({
     min: 1,
-    max: 99999,
+    max: 99,
   });
   const url = JSON.stringify(faker.image.imageUrl(640, 480, 'fashion', true));
 
@@ -51,7 +51,7 @@ const createCharacteristics = () => {
   // const id = faker.random.number(200);
   const product_id = faker.random.number({
     min: 1,
-    max: 999999,
+    max: 99,
   });
   const characters = ['Fit', 'Length', 'Quality', 'Comfort', 'Width', 'Size'];
   const randomCharacter = JSON.stringify(characters[Math.floor(Math.random() * characters.length)]);
@@ -67,11 +67,11 @@ const createCharsReviews = () => {
   // const id = faker.random.number(200);
   const char_id = faker.random.number({
     min: 1,
-    max: 99999,
+    max: 99,
   });
   const review_id = faker.random.number({
     min: 1,
-    max: 99999,
+    max: 99,
   });
   const value = faker.random.number(5);
   return `${char_id}, ${review_id}, ${value}\n`;
